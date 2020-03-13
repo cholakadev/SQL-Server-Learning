@@ -74,3 +74,12 @@ DENSE_RANK() OVER (PARTITION BY Salary ORDER BY EmployeeID) AS [Rank]
    WHERE Salary BETWEEN 10000 AND 50000) AS temp
    WHERE temp.[Rank] = 2
    ORDER BY temp.[Salary] DESC
+
+-- (10) Combine all peak names with all river names, so that the last letter of each peak name is the same as the first letter of its corresponding river name. 
+-- Display the peak names, river names, and the obtained mix (mix should be in lowercase). Sort the results by the obtained mix.
+
+SELECT p.PeakName, r.RiverName,
+LOWER(CONCAT(LEFT(p.PeakName, LEN(p.PeakName) - 1), r.RiverName)) AS Mix
+FROM Peaks AS p, Rivers AS r
+WHERE RIGHT(p.PeakName, 1) = LEFT(r.RiverName, 1)
+ORDER BY [Mix]
