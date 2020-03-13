@@ -43,4 +43,22 @@ SELECT [Name]
 
 	   SELECT * FROM V_EmployeesHiredAfter2000
 
--- (7) 
+-- (7) Write a SQL query to find the names of all employees whose last name is exactly 5 characters long.
+
+SELECT FirstName, LastName
+  FROM Employees
+ WHERE LEN(LastName) = 5
+
+-- (8) Write a query that ranks all employees using DENSE_RANK. In the DENSE_RANK function, 
+-- employees need to be partitioned by Salary and ordered by EmployeeID. 
+-- You need to find only the employees whose Salary is between 10000 and 50000 and order them by Salary in descending order.
+-- DENSE_RANK ( ) OVER ( [ <partition_by_clause> ] < order_by_clause > ) 
+
+ SELECT EmployeeID,
+	   FirstName,
+	   LastName,
+	   Salary,
+DENSE_RANK() OVER (PARTITION BY Salary ORDER BY EmployeeID) AS [Rank]
+    FROM Employees
+   WHERE Salary BETWEEN 10000 AND 50000
+ORDER BY Salary DESC
