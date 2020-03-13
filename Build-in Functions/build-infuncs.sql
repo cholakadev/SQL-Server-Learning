@@ -109,3 +109,12 @@ SELECT [Name] AS [Game],
   END AS [Duration]
   FROM Games
   ORDER BY [Game], [Duration], [Part of the Day]
+
+-- Find all users along with their IP addresses sorted by username alphabetically. 
+-- Display only rows that IP address matches the pattern: “***.1^.^.***”. 
+-- Legend: * - one symbol, ^ - one or more symbols
+
+   SELECT [Username], [IpAddress] 
+     FROM Users
+    WHERE IpAddress LIKE ('___.1_%._%.___')   -- _% <=> One or more symbols
+ ORDER BY [Username]
