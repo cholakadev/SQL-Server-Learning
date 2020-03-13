@@ -1,0 +1,36 @@
+  -- (1) Write a SQL query to find the first names of all employees in the departments with ID 3 or 10 
+  -- and whose hire year is between 1995 and 2005 inclusive.
+
+ SELECT FirstName
+   FROM Employees
+  WHERE DepartmentID IN (3, 10) 
+    AND DATEPART(YEAR, HireDate) 
+BETWEEN 1995 AND 2005
+
+-- (2) Write a SQL query to find the first and last names of all employees whose job titles does not contain “engineer”. 
+
+SELECT FirstName, LastName
+  FROM Employees
+ WHERE JobTitle NOT LIKE ('%engineer%')
+
+ -- (3) Write a SQL query to find town names that are 5 or 6 symbols long and order them alphabetically by town name. 
+
+SELECT [Name]
+  FROM Towns
+ WHERE LEN([Name]) = 5 OR LEN([Name]) = 6 
+
+  -- (4) Write a SQL query to find all towns that start with letters M, K, B or E. Order them alphabetically by town name. 
+
+   SELECT TownID, [Name]
+     FROM Towns
+    WHERE SUBSTRING([Name], 1, 1) IN ('M', 'K', 'B', 'E')
+ ORDER BY [Name]
+
+ -- (5) Write a SQL query to find all towns that does not start with letters R, B or D. Order them alphabetically by name. 
+
+   SELECT TownID, [Name]
+     FROM Towns
+    WHERE SUBSTRING([Name], 1, 1) NOT IN ('R', 'B', 'D')
+ ORDER BY [Name]
+
+ -- (6) Write a SQL query to create view V_EmployeesHiredAfter2000 with first and last name to all employees hired after 2000 year. 
