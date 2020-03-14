@@ -21,6 +21,11 @@ ORDER BY AVG(MagicWandSize) ASC
 
 -- (4) Select all deposit groups and their total deposit sums.
 
+SELECT DepositGroup,
+SUM(w.DepositAmount)
+FROM WizzardDeposits AS w
+GROUP BY DepositGroup
+
 -- (5) Select all deposit groups and their total deposit sums but only for the wizards who have their magic wands crafted by Ollivander family.
 
 -- (6) Select all deposit groups and their total deposit sums but only for the wizards who have their magic wands crafted by Ollivander family. 
