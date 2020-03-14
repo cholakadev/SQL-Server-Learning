@@ -34,6 +34,11 @@ ORDER BY [TotalDeposit] DESC
 -- •	Minimum deposit charge for each group 
 -- Select the data in ascending ordered by MagicWandCreator and DepositGroup.
 
+SELECT DepositGroup, MagicWandCreator,
+MIN(DepositCharge) AS MinimumDepositCharge
+FROM WizzardDeposits
+GROUP BY DepositGroup, MagicWandCreator
+ORDER BY MagicWandCreator ASC, DepositGroup ASC
 
 -- (8) Write down a query that creates 7 different groups based on their age.
 -- Age groups should be as follows:
