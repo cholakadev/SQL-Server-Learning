@@ -13,6 +13,12 @@ GROUP BY DepositGroup
 
 -- (3) Select the two deposit groups with the lowest average wand size.
 
+SELECT TOP 2 DepositGroup,
+AVG(MagicWandSize)
+FROM WizzardDeposits
+GROUP BY DepositGroup
+ORDER BY AVG(MagicWandSize) ASC
+
 -- (4) Select all deposit groups and their total deposit sums.
 
 -- (5) Select all deposit groups and their total deposit sums but only for the wizards who have their magic wands crafted by Ollivander family.
